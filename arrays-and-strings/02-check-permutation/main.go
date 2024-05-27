@@ -27,6 +27,28 @@ func bySorting(p Pair) bool {
 	return a == b
 }
 
+func byCounting(p Pair) bool {
+	a := make([]int, 128)
+
+	for _, v := range p.a {
+		a[v]++
+	}
+
+	for _, v := range p.b {
+		if a[v]--; a[v] < 0 {
+			return false
+		}
+	}
+
+	for _, v := range a {
+		if v > 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
 func main() {
 	it := goi.NewInterview[Pair, bool]()
 
@@ -37,6 +59,6 @@ func main() {
 	it.AddCase(Pair{"abc", "bc"}, false)
 	it.AddCase(Pair{"", " "}, false)
 
-	it.AddSolution(bySorting)
+	it.AddSolutions(bySorting, byCounting)
 	it.Print()
 }
