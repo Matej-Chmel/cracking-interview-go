@@ -4,5 +4,5 @@ github.com/Matej-Chmel/go-deep-copy v1.0.0 h1:EUuahu+0dBIF36Fm6dOksE/xvAmgol3ti8
 github.com/Matej-Chmel/go-deep-copy v1.0.0/go.mod h1:H010XAg1D1TlJAQVuWnm7JUbyLLG2490nqizuCo0zAQ=
 github.com/Matej-Chmel/go-generic-stack v1.0.3 h1:AlpGSyUvbjxRmuVWFh8S7RZzoQiTJo2U6CMW2xDvAnc=
 github.com/Matej-Chmel/go-generic-stack v1.0.3/go.mod h1:bhv6WeqwCoR3lpWBatqph/PtZbfhDQdDpHslit0S7ec=
-github.com/Matej-Chmel/go-interview v1.0.7 h1:+GdbWYI/fSw0Hn932SGSOdCKDRBdyFZxU2BhRebj2oE=
-github.com/Matej-Chmel/go-interview v1.0.7/go.mod h1:IGNdrkAmgTvscJo/1PjkFSV31Datf9+ViJs5QHc8VjY=
+github.com/Matej-Chmel/go-interview v1.0.8 h1:lvX4yQ6XzHomgnhcs6N3CtcjanPvoaDZGOAmpzQUQ+g=
+github.com/Matej-Chmel/go-interview v1.0.8/go.mod h1:IGNdrkAmgTvscJo/1PjkFSV31Datf9+ViJs5QHc8VjY=
