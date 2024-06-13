@@ -6,11 +6,6 @@ import (
 	goi "github.com/Matej-Chmel/go-interview"
 )
 
-type Pair struct {
-	a string
-	b string
-}
-
 func sorted(s string) string {
 	slice := []rune(s)
 
@@ -21,26 +16,25 @@ func sorted(s string) string {
 	return string(slice)
 }
 
-func bySorting(p Pair) bool {
-	a := sorted(p.a)
-	b := sorted(p.b)
+func bySorting(a, b string) bool {
+	a, b = sorted(a), sorted(b)
 	return a == b
 }
 
-func byCounting(p Pair) bool {
-	a := make([]int, 128)
+func byCounting(a, b string) bool {
+	chars := make([]int, 128)
 
-	for _, v := range p.a {
-		a[v]++
+	for _, v := range a {
+		chars[v]++
 	}
 
-	for _, v := range p.b {
-		if a[v]--; a[v] < 0 {
+	for _, v := range b {
+		if chars[v]--; chars[v] < 0 {
 			return false
 		}
 	}
 
-	for _, v := range a {
+	for _, v := range chars {
 		if v > 0 {
 			return false
 		}
@@ -50,14 +44,14 @@ func byCounting(p Pair) bool {
 }
 
 func main() {
-	it := goi.NewInterview[Pair, bool]()
+	it := goi.NewInterview2[string, string, bool]()
 
-	it.AddCase(Pair{"abc", "bca"}, true)
-	it.AddCase(Pair{"abc AB", "AB abc"}, true)
-	it.AddCase(Pair{"hello", "llohe"}, true)
-	it.AddCase(Pair{"hello", "world"}, false)
-	it.AddCase(Pair{"abc", "bc"}, false)
-	it.AddCase(Pair{"", " "}, false)
+	it.AddCase("abc", "bca", true)
+	it.AddCase("abc AB", "AB abc", true)
+	it.AddCase("hello", "llohe", true)
+	it.AddCase("hello", "world", false)
+	it.AddCase("abc", "bc", false)
+	it.AddCase("", " ", false)
 
 	it.AddSolutions(bySorting, byCounting)
 	it.Print()

@@ -6,7 +6,11 @@ import (
 	goi "github.com/Matej-Chmel/go-interview"
 )
 
-func addCase(i *goi.Interview[[]rune, []rune], s string) {
+type A interface {
+	AddCase([]rune, []rune)
+}
+
+func addCase(i A, s string) {
 	spaces := strings.Count(s, " ") * 2
 	data := s + strings.Repeat(" ", spaces)
 	solved := strings.ReplaceAll(s, " ", "%20")
@@ -42,7 +46,8 @@ func twoPointers(slice []rune) []rune {
 }
 
 func main() {
-	i := goi.NewInterview[[]rune, []rune]()
+	iv := goi.NewInterview[[]rune, []rune]()
+	i := &iv
 
 	addCase(i, "Mr John Smith")
 	addCase(i, "Hello World")

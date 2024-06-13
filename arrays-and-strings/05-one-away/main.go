@@ -4,17 +4,12 @@ import (
 	goi "github.com/Matej-Chmel/go-interview"
 )
 
-type Pair struct {
-	A string
-	B string
-}
-
-func (p *Pair) shortLong() (string, string) {
-	if len(p.A) < len(p.B) {
-		return p.A, p.B
+func shortLong(a, b string) (string, string) {
+	if len(a) < len(b) {
+		return a, b
 	}
 
-	return p.B, p.A
+	return b, a
 }
 
 func editReplace(shorter string, longer string) bool {
@@ -56,9 +51,7 @@ func editInsert(shorter string, longer string) bool {
 	return true
 }
 
-func twoMethods(p Pair) bool {
-	a, b := p.A, p.B
-
+func twoMethods(a, b string) bool {
 	if len(a) == len(b) {
 		return editReplace(a, b)
 	} else if len(a)-1 == len(b) {
@@ -70,8 +63,8 @@ func twoMethods(p Pair) bool {
 	return false
 }
 
-func unifiedMethod(p Pair) bool {
-	shorter, longer := p.shortLong()
+func unifiedMethod(a, b string) bool {
+	shorter, longer := shortLong(a, b)
 	s, l := 0, 0
 	diff := false
 
@@ -97,12 +90,12 @@ func unifiedMethod(p Pair) bool {
 }
 
 func main() {
-	i := goi.NewInterview[Pair, bool]()
+	i := goi.NewInterview2[string, string, bool]()
 
-	i.AddCase(Pair{"pale", "ple"}, true)
-	i.AddCase(Pair{"pales", "pale"}, true)
-	i.AddCase(Pair{"pale", "bale"}, true)
-	i.AddCase(Pair{"pale", "bae"}, false)
+	i.AddCase("pale", "ple", true)
+	i.AddCase("pales", "pale", true)
+	i.AddCase("pale", "bale", true)
+	i.AddCase("pale", "bae", false)
 
 	i.AddSolutions(twoMethods, unifiedMethod)
 	i.Print()
