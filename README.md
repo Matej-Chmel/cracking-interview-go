@@ -12,39 +12,21 @@ go run ./main.go
 Output will consist of a list of tested cases and comparison between actual result from the used solution function and expected result for that test case.
 
 ```none
-withLoop(abc) -> true
-OK!
+withArray
+=========
+(OK) abc -> true
+(OK) abcABC -> true
+(OK) abc def -> true
+(OK) abca -> false
+(OK) AbcAb -> false
+(OK) abc abc A -> false
 
-withLoop(abcABC) -> true
-OK!
-
-withLoop(abc def) -> true
-OK!
-
-withLoop(abca) -> false
-OK!
-
-withLoop(AbcAb) -> false
-OK!
-
-withLoop(abc abc A) -> false
-OK!
-
-withArray(abc) -> true
-OK!
-
-withArray(abcABC) -> true
-OK!
-
-withArray(abc def) -> true
-OK!
-
-withArray(abca) -> false
-OK!
-
-withArray(AbcAb) -> false
-OK!
-
-withArray(abc abc A) -> false
-OK!
+withLoop
+========
+(OK) abc -> true
+(OK) abcABC -> true
+(OK) abc def -> true
+(OK) abca -> false
+(OK) AbcAb -> false
+(OK) abc abc A -> false
 ```
