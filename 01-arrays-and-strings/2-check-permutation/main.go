@@ -6,13 +6,23 @@ import (
 	goi "github.com/Matej-Chmel/go-interview"
 )
 
+type RuneSlice []rune
+
+func (s RuneSlice) Len() int {
+	return len(s)
+}
+
+func (s RuneSlice) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+
+func (s RuneSlice) Less(i, j int) bool {
+	return s[i] < s[j]
+}
+
 func sorted(s string) string {
-	slice := []rune(s)
-
-	sort.Slice(slice, func(i int, j int) bool {
-		return slice[i] < slice[j]
-	})
-
+	slice := RuneSlice([]rune(s))
+	sort.Sort(slice)
 	return string(slice)
 }
 
@@ -22,7 +32,7 @@ func bySorting(a, b string) bool {
 }
 
 func byCounting(a, b string) bool {
-	chars := make([]int, 128)
+	chars := [128]int{}
 
 	for _, v := range a {
 		chars[v]++

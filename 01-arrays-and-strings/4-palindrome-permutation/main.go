@@ -7,12 +7,11 @@ import (
 	goi "github.com/Matej-Chmel/go-interview"
 )
 
-func randomPermutation(s string) string {
+func randomPermutation(gen *rand.Rand, s string) string {
 	runes := []rune(s)
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	for i := len(runes) - 1; i > 0; i-- {
-		j := r.Intn(i + 1)
+		j := gen.Intn(i + 1)
 		runes[i], runes[j] = runes[j], runes[i]
 	}
 
@@ -30,7 +29,7 @@ func getValue(r rune) (res int) {
 }
 
 func withArray(s string) bool {
-	a := make([]bool, 26)
+	a := [26]bool{}
 
 	for _, v := range s {
 		idx := getValue(v)
@@ -105,13 +104,14 @@ func main() {
 	}
 
 	i := goi.NewInterview[string, bool]()
+	gen := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	for _, v := range palindromes {
-		i.AddCase(randomPermutation(v), true)
+		i.AddCase(randomPermutation(gen, v), true)
 	}
 
 	for _, v := range notPalindromes {
-		i.AddCase(randomPermutation(v), false)
+		i.AddCase(randomPermutation(gen, v), false)
 	}
 
 	i.AddSolutions(withArray, withBits)

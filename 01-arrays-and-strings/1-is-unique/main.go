@@ -5,7 +5,7 @@ import (
 )
 
 func withArray(s string) bool {
-	a := make([]bool, 128)
+	a := [128]bool{}
 
 	for _, c := range s {
 		if a[c] {

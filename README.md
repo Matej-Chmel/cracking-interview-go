@@ -1,11 +1,11 @@
 # Cracking the Coding Interview with Go
+Solutions in Go to questions in the book Cracking the Coding Interview.
 
 ## Running a solution
-
 To run a selected solution, change directory to its subfolder and run the `main.go` file. Example follows.
 
 ```cmd
-cd arrays-and-strings/01-is-unique
+cd arrays-and-strings/1-is-unique
 go run ./main.go
 ```
 

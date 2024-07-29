@@ -6,11 +6,7 @@ import (
 	goi "github.com/Matej-Chmel/go-interview"
 )
 
-type A interface {
-	AddCase([]rune, []rune)
-}
-
-func addCase(i A, s string) {
+func addCase(i *goi.Interview[[]rune, []rune], s string) {
 	spaces := strings.Count(s, " ") * 2
 	data := s + strings.Repeat(" ", spaces)
 	solved := strings.ReplaceAll(s, " ", "%20")
@@ -46,13 +42,15 @@ func twoPointers(slice []rune) []rune {
 }
 
 func main() {
-	iv := goi.NewInterview[[]rune, []rune]()
-	i := &iv
+	i := goi.NewInterview[[]rune, []rune]()
+	i.ShowBytesAsString()
 
-	addCase(i, "Mr John Smith")
-	addCase(i, "Hello World")
-	addCase(i, "... ...")
-	addCase(i, "protocol://data   data .com")
+	addCase(&i, "ftp://nospaces.ok")
+	addCase(&i, "Mr John Smith")
+	addCase(&i, "Hello World")
+	addCase(&i, "... ...")
+	addCase(&i, "protocol://data   data .com")
+	addCase(&i, "protobuf://some important document/chapter 1.ij")
 
 	i.AddSolution(twoPointers)
 	i.Print()
